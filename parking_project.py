@@ -13,6 +13,7 @@ class Paid_parking:
             print(f"\nYour ticket number is {ticket}")
             self.parking_spaces.remove(ticket)
             self.currentTicket[ticket] = ''
+            print(f"\nThere are {len(self.parking_spaces)} parking spaces left. ")
         else:
             print("sorry garage is full")
 
@@ -44,8 +45,10 @@ class Paid_parking:
             print("Thank You! have a nice day! ")
             
         if self.currentTicket[ticket_pay] == '' and ticket_pay in self.currentTicket.keys():
-            self.payforParking()     
+            self.payforParking()
 
+        self.parking_spaces.insert(0,ticket_pay)
+        print(f"\nThere are now {len(self.parking_spaces)} parking spaces available. ")     
         return self.currentTicket
               
     def run(self):
